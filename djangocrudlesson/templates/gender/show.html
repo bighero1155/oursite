@@ -1,0 +1,19 @@
+{% extends "layout/base.html" %}
+
+{% block title %}
+View Gender
+{% endblock title %}
+
+{% block content %}
+
+<div class="col-md-4 mx-auto mt-3 container-fluid text-center">
+    <form action="#" method="post">
+        <div class="mb-3 mx-auto">
+            <label for="gender">Gender</label>
+            <input type="text" class="form.control" id="gender" name="gender" value="{{ gender.gender }}" readonly />          
+        </div>
+        <a href="/genders" class="btn btn-secondary float-end col-12 col-md-3 mx-auto text-center">Back</a>
+    </form>
+</div>
+
+{% endblock content %}

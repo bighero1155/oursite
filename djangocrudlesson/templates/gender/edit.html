@@ -1,0 +1,21 @@
+{% extends "layout/base.html" %}
+
+{% block title %} 
+Edit Gender 
+{% endblock title %}
+
+{% block content %}
+
+<div class="col-md-4 mx-auto mt-3 container-fluid text-center">
+    <form action="/gender/update/{{ gender.gender_id }}" method="post">
+        {% csrf_token %}
+        <div class="mb-3 mx-auto">
+            <label for="gender">Gender</label>
+            <input type="text" class="form.control" id="gender" name="gender" value="{{ gender.gender }}" />          
+        </div>
+        <button type="submit" class="btn btn-success float-end col-12 col-md-4">Update Gender</button>
+        <a href="/genders" class="btn btn-secondary float-end col-12 col-md-3 me-1">Back</a>
+    </form>
+</div>
+
+{% endblock content %}

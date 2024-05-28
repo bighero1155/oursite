@@ -1,0 +1,56 @@
+{% extends "layout/base.html" %}
+
+{% block title %} 
+Edit User
+{% endblock title %}
+
+{% block content %}
+
+<div class="col-md-4 mx-auto mt-3">
+    <form action="/users/update/{{ user.user_id }}" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="first_name">First Name</label>
+            <br>
+            <input type="text" class="form.control" id="first_name" name="first_name" value="{{ user.first_name }}"/>          
+        </div>
+        <div class="mb-3">
+            <label for="middle_name">Middle Name</label>
+            <br>
+            <input type="text" class="form.control" id="middle_name" name="middle_name" value="{{ user.middle_name }}" />          
+        </div>
+        <div class="mb-3">
+            <label for="last_name">Last Name</label>
+            <br>
+            <input type="text" class="form.control" id="last_name" name="last_name" value="{{ user.last_name }}" />          
+        </div>
+        <div class="mb-3">
+            <label for="age">Age</label>
+            <br>
+            <input type="text" class="form.control" id="age" name="age" value="{{ user.age }}" />          
+        </div>
+        <div class="mb-3">
+            <label for="birth_date">Birth Date</label>
+            <br>
+            <input type="date" class="form.control" id="birth_date" name="birth_date" value="{{ user.birth_date | date:'Y-m-d' }}" />          
+        </div>
+        <div class="mb-3">
+            <label for="gender_id">Gender</label>
+            <select name="gender_id" id="gender_id" class="form-select">
+                <option value="{{ user.gender_id }}" selected hidden>{{ user.gender }}</option>
+                {% for gender in genders %}
+                <option value="{{ gender.gender_id }}">{{ gender.gender }}</option>
+                {% endfor %}
+            </select>                     
+        </div>
+        <div class="mb-3">
+            <label for="username">Username</label>
+            <br>
+            <input type="text" class="form.control" id="username" name="username" value="{{ user.username }}" />          
+        </div>
+        <button type="submit" class="btn btn-success float-end col-12 col-md-4">Update User</button>
+        <a href="/users" class="btn btn-secondary float-end col-12 col-md-3 me-1">Back</a>
+    </form>
+</div>
+
+{% endblock content %}
